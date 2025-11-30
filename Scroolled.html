@@ -198,10 +198,41 @@
       background-color: #a12727;
       color: #F6EFD2;
     }
+
+    .navbar {
+      position: fixed;
+      background: #273F4F;
+      padding: 12px;
+      display: flex;
+      gap: 15px;
+      z-index: 100;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    .navbar a:hover {
+      background: #4fa1d9;
+    }
+
   </style>
 </head>
 
 <body>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="testpixel.html">Pixel Transition</a>
+    <a href="testpixel2.html">Pixel Transition v2</a>
+    <a href="Video_Transition.html">Video Transition</a>
+    <a href="Circle_transition.html">Circle_transition</a>
+    <a href="Circle_Transition2.html">Circle Transition v2</a>
+  </nav>
+
   <section id="hero-section" class="hero-section">
     <div class="sticky-wrapper">
       <canvas id="sequence"></canvas>
@@ -224,6 +255,7 @@
       </div>
     </div>
   </section>
+
 <script>
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 

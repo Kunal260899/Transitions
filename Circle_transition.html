@@ -9,88 +9,116 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <style>
-:root {
-  --circle-color: grey;
-  --bg1: black;
-  --bg2: grey;
-  --bg3: lightslategray;
-  --fg: #f0f3f7;
-}
+    :root {
+      --circle-color: grey;
+      --bg1: black;
+      --bg2: grey;
+      --bg3: lightslategray;
+      --fg: #f0f3f7;
+    }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
-  background: var(--bg1);
-  color: var(--fg);
-  overflow-x: hidden;
-  scroll-behavior: auto;
-}
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg1);
+      color: var(--fg);
+      overflow-x: hidden;
+      scroll-behavior: auto;
+    }
 
-section {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: clamp(1rem, 3vw, 1.5rem);
-  position: relative;
-  z-index: 1;
-  transition: opacity 0.3s ease;
-}
+    section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      position: relative;
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
 
-.projects {
-  background: var(--bg1);
-}
+    .projects {
+      background: var(--bg1);
+    }
 
-.education {
-  background: var(--bg2);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10;
-}
+    .education {
+      background: var(--bg2);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
 
-.contact {
-  background: var(--bg3);
-}
+    .contact {
+      background: var(--bg3);
+    }
 
-.circle-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 5;
-  overflow: hidden;
-}
+    .circle-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+      overflow: hidden;
+    }
 
-.circle-circle {
-  position: absolute;
-  left: 50%;
-  top: 50%;  
-  width: 100vh;
-  height: 100vh;
-  border-radius: 50%;
-  background: var(--circle-color);
-  transform: translate(-50%, -50%) scale(0);
-  will-change: transform;
-}
+    .circle-circle {
+      position: absolute;
+      left: 50%;
+      top: 50%;  
+      width: 100vh;
+      height: 100vh;
+      border-radius: 50%;
+      background: var(--circle-color);
+      transform: translate(-50%, -50%) scale(0);
+      will-change: transform;
+    }
+
+    .navbar {
+      position: fixed;
+      background: #273F4F;
+      padding: 12px;
+      display: flex;
+      gap: 15px;
+      z-index: 100;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    .navbar a:hover {
+      background: #4fa1d9;
+    }
+
 </style>
 </head>
 <body>
 
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="Scroolled.html">Scroll Transition</a>
+    <a href="testpixel.html">Pixel Transition</a>
+    <a href="testpixel2.html">Pixel Transition v2</a>
+    <a href="Video_Transition.html">Video Transition</a>
+    <a href="Circle_Transition2.html">Circle Transition v2</a>
+  </nav>
+
 <section class="projects">
-  <h1>Projects</h1>
-  <p>Scroll down — circle grows to reveal Education</p>
+  <h1>Section 1</h1>
 </section>
 
 <section class="education">
-  <h1>Education</h1>
-  <p>This section is hidden until circle fully covers the first.</p>
+  <h1>Section 2</h1>
 </section>
 
 <section class="contact">
-  <h1>Contact</h1>
-  <p>circle shrinks as you reach this section</p>
+  <h1>Section 3</h1>
 </section>
 
 <div class="circle-overlay">
@@ -98,49 +126,49 @@ section {
 </div>
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-const circle = document.getElementById("circleCircle");
-const education = document.querySelector(".education");
+  const circle = document.getElementById("circleCircle");
+  const education = document.querySelector(".education");
 
-let smoothScroll = { y: window.scrollY };
-let targetScroll = window.scrollY;
+  let smoothScroll = { y: window.scrollY };
+  let targetScroll = window.scrollY;
 
-window.addEventListener("scroll", () => targetScroll = window.scrollY);
-gsap.ticker.add(() => {
-  smoothScroll.y += (targetScroll - smoothScroll.y) * 0.1;
-  ScrollTrigger.update(); 
-});
+  window.addEventListener("scroll", () => targetScroll = window.scrollY);
+  gsap.ticker.add(() => {
+    smoothScroll.y += (targetScroll - smoothScroll.y) * 0.1;
+    ScrollTrigger.update(); 
+  });
 
-const growTL = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".education",
-    start: "top bottom",
-    end: "top top",
-    scrub: true,
-    onUpdate: (self) => {
-      const progress = self.progress;
-      gsap.set(education, { opacity: gsap.utils.clamp(0, 1, progress * 1.5) });
+  const growTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".education",
+      start: "top bottom",
+      end: "top top",
+      scrub: true,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        gsap.set(education, { opacity: gsap.utils.clamp(0, 1, progress * 1.5) });
+      }
     }
-  }
-})
-.fromTo(circle,
-  { scale: 0 },
-  { scale: 3, ease: "none" }
-);
+  })
+  .fromTo(circle,
+    { scale: 0 },
+    { scale: 3, ease: "none" }
+  );
 
-const shrinkTL = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".contact",
-    start: "top bottom",
-    end: "top top",
-    scrub: true,
-  }
-})
-.fromTo(circle,
-  { scale: 3 },
-  { scale: 0, ease: "none", immediateRender: false }
-);
+  const shrinkTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".contact",
+      start: "top bottom",
+      end: "top top",
+      scrub: true,
+    }
+  })
+  .fromTo(circle,
+    { scale: 3 },
+    { scale: 0, ease: "none", immediateRender: false }
+  );
 </script>
 
 </body>

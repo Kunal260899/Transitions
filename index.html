@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #273F4F, #1B2B36);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    p {
+      opacity: 0.8;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .btns a {
+      padding: 12px 22px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      backdrop-filter: blur(6px);
+      transition: 0.25s;
+      font-size: 0.95rem;
+    }
+
+    .btns a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    @media(max-width:500px) {
+      h1 { font-size: 2.1rem; }
+      p { font-size: 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Welcome</h1>
+    <p>Use the links below to navigate to each demo page. Every page highlights a unique transition technique.</p>
+
+    <div class="btns">
+      <a href="Scroolled.html">Scroll Transition</a>
+      <a href="testpixel.html">Pixel Transition</a>
+      <a href="testpixel2.html">Pixel Transition v2</a>
+      <a href="Video_Transition.html">Video Transition</a>
+      <a href="Circle_transition.html">Circle Transition</a>
+      <a href="Circle_Transition2.html">Circle Transition v2</a>
+    </div>
+  </div>
+
+</body>
+</html>

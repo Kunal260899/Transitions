@@ -48,10 +48,41 @@
       font-size: 20vh;
       font-weight: 900;
     }
+    .navbar {
+      position: fixed;
+      background: #273F4F;
+      padding: 12px;
+      display: flex;
+      gap: 15px;
+      z-index: 100;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    .navbar a:hover {
+      background: #4fa1d9;
+    }
+
   </style>
 </head>
 <body>
-  <section>Scroll Down 👇</section>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="Scroolled.html">Scroll Transition</a>
+    <a href="testpixel.html">Pixel Transition</a>
+    <a href="testpixel2.html">Pixel Transition v2</a>
+    <a href="Circle_transition.html">Circle_transition</a>
+    <a href="Circle_Transition2.html">Circle Transition v2</a>
+  </nav>
+
+  <section>Section 1</section>
 
   <section class="video-section">
     <video id="bgVideo" muted playsinline preload="auto">
@@ -60,7 +91,7 @@
     <p class="video-text">Kunal Sondkar</p>
   </section>
 
-  <section>End</section>
+  <section>Section 2</section>
 
   <script>
     gsap.registerPlugin(ScrollTrigger);

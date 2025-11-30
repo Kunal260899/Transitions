@@ -56,10 +56,43 @@
       z-index: 1;
       transform-origin: center center;
     }
+
+    .navbar {
+      position: fixed;
+      background: #273F4F;
+      padding: 12px;
+      display: flex;
+      gap: 15px;
+      z-index: 100;
+      font-size: 16px;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+    }
+
+    .navbar a:hover {
+      background: #4fa1d9;
+    }
+    
   </style>
 </head>
 
 <body>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="Scroolled.html">Scroll Transition</a>
+    <a href="testpixel.html">Pixel Transition</a>
+    <a href="testpixel2.html">Pixel Transition v2</a>
+    <a href="Video_Transition.html">Video Transition</a>
+    <a href="Circle_transition.html">Circle Transition</a>
+  </nav>
+
   <div class="circle"></div>
 
   <section class="section1"><p>Section 1</p></section>
