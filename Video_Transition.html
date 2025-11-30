@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Transition</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      height: 300vh;
+    }
+
+    section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+    }
+
+    .video-section {
+      position: relative;
+      overflow: hidden;
+      background-color: #111;
+      transition: background-color 1s ease;
+    }
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .video-text {
+      position: relative;
+      z-index: 1;
+      font-size: 20vh;
+      font-weight: 900;
+    }
+  </style>
+</head>
+<body>
+  <section>Scroll Down 👇</section>
+
+  <section class="video-section">
+    <video id="bgVideo" muted playsinline preload="auto">
+      <source src="outputvideo.mp4" type="video/mp4" />
+    </video>
+    <p class="video-text">Kunal Sondkar</p>
+  </section>
+
+  <section>End</section>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    const video = document.getElementById("bgVideo");
+    const videoSection = document.querySelector(".video-section");
+
+    const endBackground = "#1a1a1a";
+
+    video.addEventListener("loadeddata", () => {
+      console.log("Video loaded:", video.duration);
+
+      ScrollTrigger.create({
+        trigger: ".video-section",
+        start: "top bottom",
+        end: "bottom center",
+        onEnter: () => {
+          gsap.to(video, { opacity: 1, duration: 0.6 });
+          video.currentTime = 0;
+          video.play();
+        },
+        onLeave: () => {
+          gsap.to(video, { opacity: 0, duration: 0.6 });
+          video.pause();
+        },
+        onEnterBack: () => {
+          if (video.currentTime < video.duration - 0.5) {
+            gsap.to(video, { opacity: 1, duration: 0.6 });
+            video.play();
+          }
+        },
+        onLeaveBack: () => {
+          gsap.to(video, { opacity: 0, duration: 0.6 });
+          video.pause();
+        }
+      });
+
+      video.addEventListener("ended", () => {
+        gsap.to(video, { opacity: 0, duration: 1 });
+        gsap.to(videoSection, { backgroundColor: endBackground, duration: 1.5 });
+      });
+    });
+  </script>
+</body>
+</html>
